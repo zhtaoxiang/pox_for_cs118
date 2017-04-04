@@ -272,17 +272,17 @@ class Scheduler (object):
 
     #print(len(self._ready), "tasks")
 
-    try:
-      rv = t.execute()
-    except StopIteration:
-      return True
-    except:
-      try:
-        print("Task", t, "caused exception and was de-scheduled")
-        traceback.print_exc()
-      except:
-        pass
-      return True
+    #try:
+    rv = t.execute() # Haitao: stop when error occurs
+    #except StopIteration:
+    #  return True
+    #except:
+    #  try:
+    #    print("Task", t, "caused exception and was de-scheduled")
+    #    traceback.print_exc()
+    #  except:
+    #    pass
+    #  return True
 
     if isinstance(rv, BlockingOperation):
       try:
